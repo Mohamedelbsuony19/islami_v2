@@ -9,7 +9,6 @@ class MyTheme {
       appBarTheme: AppBarTheme(
           elevation: 0,
           color: Colors.transparent,
-          centerTitle: true,
           iconTheme: IconThemeData(color: Colors.black)),
       textTheme: TextTheme(
           headline1: TextStyle(
@@ -17,6 +16,8 @@ class MyTheme {
           subtitle1: TextStyle(
               color: Colors.black, fontSize: 25, fontWeight: FontWeight.w400)),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: Colors.black, unselectedItemColor: Colors.white));
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.white,
+      ));
   static final ThemeData Darkheme = ThemeData();
 }
