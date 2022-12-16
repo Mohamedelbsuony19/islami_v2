@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../models/hadeth/models_hadeth.dart';
 import '../../shared/componente/componetes.dart';
@@ -14,7 +15,7 @@ class hadethScreen extends StatelessWidget {
           Image.asset('assetes/images/head_hadeth.png'),
           Divider(color: Theme.of(context).primaryColor, thickness: 3),
           Text(
-            'Ahadeth',
+            AppLocalizations.of(context)!.ahadeth,
             style: Theme.of(context).textTheme.subtitle1,
           ),
           Divider(

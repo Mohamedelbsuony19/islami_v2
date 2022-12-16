@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class sebhaScreen extends StatefulWidget {
   @override
@@ -44,7 +45,7 @@ class _sebhaScreenState extends State<sebhaScreen> {
             height: 20,
           ),
           Text(
-            'عدد التسبيحات',
+            AppLocalizations.of(context)!.adadTasbeh,
             style: Theme.of(context).textTheme.subtitle1,
           ),
           SizedBox(
