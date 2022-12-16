@@ -41,8 +41,6 @@ class hadethScreen extends StatelessWidget {
     List<String> ahadeth = content.trim().split('#\r\n');
     for (int i = 0; i < ahadeth.length; i++) {
       String hadeth = ahadeth[i];
-      print(hadeth);
-      print('----------------------');
       List<String> lines = hadeth.split('\n');
       String title = lines[0];
       lines.removeAt(0);
