@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/modules/quraan/quran_screen.dart';
 import 'package:islami_app/shared/componente/componetes.dart';
+
+import '../../../models/quran/models_quran.dart';
 
 class souraDetails extends StatefulWidget {
   static const String route_Name = 'souaDetalis';

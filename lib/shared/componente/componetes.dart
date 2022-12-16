@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/modules/quraan/quran_screen.dart';
+import 'package:islami_app/modules/hadeth/hadeth_details.dart';
 import 'package:islami_app/modules/quraan/soura_details/soura_details.dart';
+
+import '../../models/hadeth/models_hadeth.dart';
+import '../../models/quran/models_quran.dart';
 
 Widget defaultFromFaild({
   required TextEditingController controller,
@@ -50,6 +53,29 @@ Widget itemSouraOrVarses(
         padding: EdgeInsets.symmetric(vertical: 12),
         child: Text(
           nameSoura,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.subtitle1,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget itemHadeth({
+  required hadethModel HModel,
+  required BuildContext context,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20),
+    child: InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, hadithDetails.routeName,
+            arguments: HModel);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 12),
+        child: Text(
+          HModel.title,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.subtitle1,
         ),
