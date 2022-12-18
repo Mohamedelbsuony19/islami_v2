@@ -1,34 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
-import '../modules/hadeth/hadeth_screen.dart';
-import '../modules/quraan/quran_screen.dart';
-import '../modules/radio/radio_screen.dart';
-import '../modules/sebha/sebha_screen.dart';
+import '../shared/app_provider/app_prvider.dart';
 
-class homeLayout extends StatefulWidget {
+class homeLayout extends StatelessWidget {
   static const String routrName = 'home';
 
   @override
-  State<homeLayout> createState() => _homeLayoutState();
-}
-
-class _homeLayoutState extends State<homeLayout> {
-  late int curIndex = 0;
-  late List screens = [
-    quraanScreen(),
-    hadethScreen(),
-    sebhaScreen(),
-    radioScreen()
-  ];
-
-// assetes/images/bg_light.png
-  @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppProvider>(context);
+
     return Stack(
       children: [
         Image.asset(
-          'assetes/images/bg_light.png',
+          provider.islight
+              ? 'assetes/images/bg_light.png'
+              : "assetes/images/bg_dark.png",
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
@@ -40,15 +28,14 @@ class _homeLayoutState extends State<homeLayout> {
               style: Theme.of(context).textTheme.headline1,
             ),
           ),
-          body: screens[curIndex],
+          body: provider.screens[provider.curIndex], //screens[curIndex],
           bottomNavigationBar: Theme(
             data: Theme.of(context)
                 .copyWith(canvasColor: Theme.of(context).primaryColor),
             child: BottomNavigationBar(
-              currentIndex: curIndex,
+              currentIndex: provider.curIndex,
               onTap: (index) {
-                curIndex = index;
-                setState(() {});
+                provider.changeScreen(index);
               },
               items: [
                 BottomNavigationBarItem(
@@ -65,6 +52,9 @@ class _homeLayoutState extends State<homeLayout> {
                       AssetImage('assetes/images/ic_radio.png'),
                     ),
                     label: AppLocalizations.of(context)!.radio),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.settings),
+                    label: AppLocalizations.of(context)!.setting),
               ],
             ),
           ),

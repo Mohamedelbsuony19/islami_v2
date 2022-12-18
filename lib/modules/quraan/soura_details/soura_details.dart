@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/shared/componente/componetes.dart';
+import 'package:provider/provider.dart';
 
-import '../../../models/quran/models_quran.dart';
+import '../../../models/quran/model_quran.dart';
+import '../../../shared/app_provider/app_prvider.dart';
 
 class souraDetails extends StatefulWidget {
   static const String route_Name = 'souaDetalis';
@@ -16,11 +18,14 @@ class _souraDetailsState extends State<souraDetails> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppProvider>(context);
     var arg = ModalRoute.of(context)?.settings.arguments as argData;
     if (verses.isEmpty) loadFile(arg.index);
     return Stack(children: [
       Image.asset(
-        'assetes/images/bg_light.png',
+        provider.islight
+            ? 'assetes/images/bg_light.png'
+            : "assetes/images/bg_dark.png",
         width: double.infinity,
         height: double.infinity,
         fit: BoxFit.fill,
@@ -35,19 +40,19 @@ class _souraDetailsState extends State<souraDetails> {
         body: verses.length == 0
             ? Center(child: CircularProgressIndicator())
             : ListView.separated(
-                separatorBuilder: (context, index) {
-                  return Container(
-                    height: 1,
-                    margin: EdgeInsets.symmetric(horizontal: 50),
-                    color: Theme.of(context).primaryColor,
-                  );
-                },
-                itemBuilder: (context, index) {
-                  return itemSouraOrVarses(
-                      nameSoura: verses[index], context: context);
-                },
-                itemCount: verses.length,
-              ),
+          separatorBuilder: (context, index) {
+            return Container(
+              height: 1,
+              margin: EdgeInsets.symmetric(horizontal: 50),
+              color: Theme.of(context).primaryColor,
+            );
+          },
+          itemBuilder: (context, index) {
+            return itemSouraOrVarses(
+                nameSoura: verses[index], context: context);
+          },
+          itemCount: verses.length,
+        ),
       )
     ]);
   }
