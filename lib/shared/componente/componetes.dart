@@ -3,7 +3,7 @@ import 'package:islami_app/modules/hadeth/hadeth_details.dart';
 import 'package:islami_app/modules/quraan/soura_details/soura_details.dart';
 
 import '../../models/hadeth/models_hadeth.dart';
-import '../../models/quran/models_quran.dart';
+import '../../models/quran/model_quran.dart';
 
 Widget defaultFromFaild({
   required TextEditingController controller,

@@ -1,25 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
-class sebhaScreen extends StatefulWidget {
-  @override
-  State<sebhaScreen> createState() => _sebhaScreenState();
-}
+import '../../shared/app_provider/app_prvider.dart';
 
-class _sebhaScreenState extends State<sebhaScreen> {
-  late int counter = 0;
-  late List<String> azkar = [
-    'سبحان الله',
-    'الحمدلله',
-    'لا اله الا الله',
-    'الله اكبر',
-    'لاحول ولا قوه ال بالله'
-  ];
-  late int index = 0;
-  late double angle = 0;
-
+class sebhaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<AppProvider>(context);
     return Container(
       width: double.infinity,
       child: Column(
@@ -33,10 +21,10 @@ class _sebhaScreenState extends State<sebhaScreen> {
                       top: MediaQuery.of(context).size.height * 0.09),
                   child: InkWell(
                       onTap: () {
-                        onClickTasbeh();
+                        pro.onClickTasbeh();
                       },
                       child: Transform.rotate(
-                          angle: angle,
+                          angle: pro.angle,
                           child: Image.asset(
                               'assetes/images/body_of_sebha.png')))),
             ],
@@ -57,7 +45,7 @@ class _sebhaScreenState extends State<sebhaScreen> {
                 color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(20)),
             child: Text(
-              '$counter',
+              '${pro.counter}',
               style: Theme.of(context).textTheme.headline1,
             ),
           ),
@@ -70,25 +58,17 @@ class _sebhaScreenState extends State<sebhaScreen> {
                 color: Color(0xFFB7935F),
                 borderRadius: BorderRadius.circular(15)),
             child: Text(
-              azkar[index],
-              style: Theme.of(context).textTheme.subtitle1,
+              pro.azkar[pro.index],
+              style: pro.islight
+                  ? Theme.of(context).textTheme.subtitle1
+                  : Theme.of(context)
+                      .textTheme
+                      .subtitle1
+                      ?.copyWith(color: Colors.black),
             ),
           )
         ],
       ),
     );
-  }
-
-  void onClickTasbeh() {
-    setState(() {
-      counter++;
-      if (counter % 33 == 0) {
-        index++;
-      }
-      if (counter % 165 == 0) {
-        index = 0;
-      }
-      angle += 20;
-    });
   }
 }

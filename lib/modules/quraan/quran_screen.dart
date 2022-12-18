@@ -146,4 +146,3 @@ class quraanScreen extends StatelessWidget {
     );
   }
 }
-
