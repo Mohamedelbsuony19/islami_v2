@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/modules/settings/theme_btn_sheet.dart';
 import 'package:islami_app/shared/app_provider/app_prvider.dart';
 import 'package:provider/provider.dart';
@@ -70,7 +71,9 @@ class settingScreen extends StatelessWidget {
                   color: pro.islight ? Colors.white : Color(0xFFB7935F),
                   border: Border.all(color: Theme.of(context).primaryColor)),
               child: Text(
-                pro.islight ? 'Light' : 'Dark',
+                pro.islight
+                    ? AppLocalizations.of(context)!.light
+                    : AppLocalizations.of(context)!.dark,
                 style: Theme.of(context)
                     .textTheme
                     .headline1

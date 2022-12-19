@@ -1,10 +1,12 @@
 {
-  "islami": "ISLAMI",
-  "ahadeth": "AHADETH",
+  "islami": "Islami",
+  "ahadeth": "Ahadeth",
   "quran": "Quraan",
-  "sebha": "Sebha",
+  "sebha": "Mesbha",
   "radio": "Radio",
-  "adadTasbeh": "Number Of Tasbeeh",
-  "setting": "Settings",
+  "adadTasbeh": "Number of Tasbih",
+  "setting": "Setting",
+  "light": "Light",
+  "dark": "Dark",
   "language": "Language"
 }

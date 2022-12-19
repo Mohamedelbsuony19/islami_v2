@@ -43,14 +43,27 @@ class radioScreen extends StatelessWidget {
             );
           } else if (snapShot.hasError) {
             return Center(
-              child: IconButton(
-                onPressed: () {
-                  pro.respnse = pro.fetchRadio();
-                },
-                icon: Icon(
-                  Icons.refresh,
-                  color: Theme.of(context).primaryColor,
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      pro.respnse = pro.fetchRadio();
+                    },
+                    icon: Icon(
+                      Icons.refresh,
+                      size: 40,
+                      color: Color(0xFFB7935F),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Check Your Intrnet',
+                    style: Theme.of(context).textTheme.subtitle1,
+                  )
+                ],
               ),
             );
           } else {
