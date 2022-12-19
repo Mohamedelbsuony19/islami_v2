@@ -38,14 +38,14 @@ class langBtnSheet extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .subtitle1
-                  ?.copyWith(color:pro.islight?Color(0xFFB7935F):Colors.white,),
+                  ?.copyWith(color: Color(0xFFB7935F)),
             ),
             Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Icon(
                 Icons.done_outline,
-                color:pro.islight?Color(0xFFB7935F):Colors.white,
+                color: Color(0xFFB7935F),
               ),
             )
           ],
@@ -56,10 +56,10 @@ class langBtnSheet extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
-            Text(
-              text,
-              style: Theme.of(context).textTheme.subtitle1,
-            )
+            Text(text,
+                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                      color: pro.islight ? Colors.black : Colors.white,
+                    ))
           ],
         ),
       );

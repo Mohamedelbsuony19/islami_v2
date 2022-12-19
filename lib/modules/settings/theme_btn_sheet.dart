@@ -37,15 +37,17 @@ class themeBtnSheet extends StatelessWidget {
           children: [
             Text(
               text,
-              style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                  color: pro.islight ? Color(0xFFB7935F) : Colors.white),
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle1
+                  ?.copyWith(color: Color(0xFFB7935F)),
             ),
             Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Icon(
                 Icons.done_outline,
-                color: pro.islight ? Color(0xFFB7935F) : Colors.white,
+                color: Color(0xFFB7935F),
               ),
             )
           ],
@@ -58,7 +60,10 @@ class themeBtnSheet extends StatelessWidget {
           children: [
             Text(
               text,
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle1!
+                  .copyWith(color: pro.islight ? Colors.black : Colors.white),
             )
           ],
         ),
