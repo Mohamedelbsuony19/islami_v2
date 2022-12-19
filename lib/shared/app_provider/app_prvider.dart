@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/shared/style/myTheme.dart';
-
+import 'package:audioplayers/audioplayers.dart';
+import '../../models/radio/Radio_response.dart';
 import '../../modules/hadeth/hadeth_screen.dart';
 import '../../modules/quraan/quran_screen.dart';
 import '../../modules/radio/radio_screen.dart';
 import '../../modules/sebha/sebha_screen.dart';
 import '../../modules/settings/settings_screen.dart';
+import 'package:http/http.dart' as http;
 
 class AppProvider extends ChangeNotifier {
   late String appLang = 'en';
@@ -61,7 +65,7 @@ class AppProvider extends ChangeNotifier {
 
   void loadFile(int index) async {
     String content =
-        await rootBundle.loadString('assetes/files/${index + 1}.txt');
+    await rootBundle.loadString('assetes/files/${index + 1}.txt');
     List<String> lines = content.split('\n');
     verses = lines;
     notifyListeners();
@@ -77,5 +81,29 @@ class AppProvider extends ChangeNotifier {
     }
     angle += 20;
     notifyListeners();
+  }
+
+  late Future<RadioResponse> respnse = fetchRadio();
+
+  Future<RadioResponse> fetchRadio() async {
+    final response = await http
+        .get(Uri.parse('https://www.mp3quran.net/api/v3/radios?language=ar'));
+
+    if (response.statusCode == 200) {
+      return RadioResponse.fromJson(
+          jsonDecode(utf8.decode(response.bodyBytes)));
+    } else {
+      throw Exception('Failed to load radio');
+    }
+  }
+
+  late AudioPlayer audioPlayer = AudioPlayer();
+
+  play(String url) async {
+    int resualt = await audioPlayer.play(url);
+  }
+
+  puse() async {
+    await audioPlayer.pause();
   }
 }
